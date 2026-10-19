@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keseimbangan Perekonomian 2 Sektor</title>
+<style>
+:root{--navy:#10243a;--blue:#2563eb;--cyan:#dff5f2;--ink:#243449;--muted:#63748a;--paper:#f5f8fc;--white:#fff;--line:#dce5ef;--gold:#f2b84b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
+header{background:linear-gradient(125deg,#10243a 0%,#173f60 60%,#247b83 100%);color:white;padding:24px max(6vw,24px) 74px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff25;border-radius:50%;right:-90px;top:-140px;box-shadow:0 0 0 45px #ffffff0b,0 0 0 90px #ffffff08}
+nav{display:flex;justify-content:space-between;align-items:center;gap:18px;position:relative;z-index:1;max-width:1120px;margin:auto}
+.brand{font-weight:800;letter-spacing:.4px}.brand span{color:#78e0d2}
+nav a{color:#e4f3f8;text-decoration:none;font-size:.92rem;margin-left:20px}
+.hero{max-width:1120px;margin:64px auto 0;position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:35px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.76rem;color:#9fe8dc;font-weight:800}
+h1{font-size:clamp(2.3rem,5vw,4.3rem);line-height:1.08;margin:14px 0 20px;max-width:760px}
+.hero p{color:#d8e8f1;font-size:1.08rem;max-width:660px}
+.hero-card{border:1px solid #ffffff30;background:#ffffff12;backdrop-filter:blur(6px);border-radius:22px;padding:25px}
+.hero-card .formula{font-size:1.55rem;font-weight:800;color:#a6f2e4;margin:10px 0}
+.hero-card small{color:#d8e8f1}
+.container{max-width:1120px;margin:-32px auto 0;padding:0 24px 60px;position:relative}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
+.stat,.panel,.topic{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px #18334a08}
+.stat{padding:20px 22px}.stat b{display:block;font-size:1.15rem;color:var(--navy)}.stat span{color:var(--muted);font-size:.9rem}
+section{scroll-margin-top:20px;margin:32px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:16px}
+h2{font-size:1.8rem;color:var(--navy);margin:0 0 6px;line-height:1.2}
+.lead{color:var(--muted);margin:0;max-width:760px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{padding:25px}.panel h3{margin:0 0 10px;color:var(--navy)}.panel p{margin:8px 0}
+.pill{display:inline-block;border-radius:99px;padding:5px 10px;background:#e8f6f4;color:#17685f;font-weight:700;font-size:.78rem}
+.callout{border-left:4px solid var(--blue);background:#eff5ff;padding:14px 17px;border-radius:0 12px 12px 0;margin-top:16px}
+.formula-box{background:var(--navy);color:white;padding:23px;border-radius:16px;text-align:center;margin:14px 0}
+.formula-box .big{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;letter-spacing:.4px}.formula-box p{color:#d4e4f0;margin:6px 0 0}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.step{padding:19px;background:white;border:1px solid var(--line);border-radius:16px}
+.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#e2f5f1;color:#17685f;font-weight:800;margin-bottom:12px}
+.step h3{font-size:1rem;margin:0 0 7px;color:var(--navy)}.step p{margin:0;color:var(--muted);font-size:.94rem}
+.calc{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.controls label{display:block;font-weight:700;margin:15px 0 5px}.controls input{width:100%;padding:12px 13px;border:1px solid #cbd8e6;border-radius:10px;font:inherit;color:var(--ink);background:#fbfdff}
+.controls input:focus{outline:3px solid #bfdbfe;border-color:var(--blue)}
+button{border:0;background:var(--blue);color:white;padding:12px 17px;border-radius:10px;font-weight:800;font:inherit;cursor:pointer;margin-top:17px}button:hover{background:#174fc2}
+.result{background:#effaf7;border:1px solid #c7eee5;border-radius:16px;padding:23px}
+.result .label{font-size:.82rem;color:#47756c;text-transform:uppercase;letter-spacing:1px;font-weight:800}
+.result .value{font-size:2.2rem;color:#125e51;font-weight:850;line-height:1.2;margin:8px 0}
+.result .equation{background:white;border-radius:10px;padding:12px;margin:12px 0;font-weight:700;overflow-wrap:anywhere}
+table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line)}th{color:var(--navy);background:#f3f7fb}
+.topic{padding:21px}.topic h3{margin:0 0 7px;color:var(--navy)}.topic p{margin:0;color:var(--muted)}
+.quiz-q{padding:18px 0;border-bottom:1px solid var(--line)}.quiz-q:last-child{border:0}.quiz-q p{font-weight:750;margin:0 0 10px}
+.quiz-q label{display:block;padding:8px 10px;margin:5px 0;border:1px solid var(--line);border-radius:9px;cursor:pointer}.quiz-q label:hover{background:#f5f9ff}
+.feedback{font-weight:700;margin-top:10px}.good{color:#13795b}.bad{color:#b45309}
+footer{background:#10243a;color:#d3e2ec;padding:28px 24px;text-align:center}footer strong{color:white}
+.note{font-size:.88rem;color:var(--muted)}
+@media(max-width:760px){nav{align-items:flex-start;flex-direction:column}nav a{margin:0 12px 0 0}.hero{grid-template-columns:1fr;margin-top:42px}.quick,.grid2,.steps,.calc{grid-template-columns:1fr}.container{padding:0 16px 40px}.section-head{display:block}.hero-card{max-width:480px}.stat{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <nav><div class="brand">EKONOMI<span>•</span>PELAJAR</div><div><a href="#konsep">Konsep</a><a href="#rumus">Rumus</a><a href="#kalkulator">Kalkulator</a><a href="#kuis">Kuis</a></div></nav>
+  <div class="hero">
+    <div><div class="eyebrow">Materi pembelajaran ekonomi makro</div>
+      <h1>Keseimbangan<br>Perekonomian 2 Sektor</h1>
+      <p>Memahami hubungan antara rumah tangga dan perusahaan, bagaimana pendapatan berputar, serta bagaimana tingkat pendapatan nasional mencapai keseimbangan.</p>
+    </div>
+    <div class="hero-card"><small>Inti materi</small><div class="formula">Y = C + I</div><div>Pengeluaran agregat = konsumsi + investasi</div><hr style="border:0;border-top:1px solid #ffffff35;margin:18px 0"><small>Model sederhana tanpa pemerintah dan perdagangan luar negeri.</small></div>
+  </div>
+</header>
+<main class="container">
+  <div class="quick">
+    <div class="stat"><b>2 pelaku ekonomi</b><span>Rumah tangga dan perusahaan</span></div>
+    <div class="stat"><b>Pengeluaran agregat</b><span>Konsumsi (C) + investasi (I)</span></div>
+    <div class="stat"><b>Tujuan model</b><span>Menentukan pendapatan nasional seimbang</span></div>
+  </div>
+
+  <section id="konsep">
+    <div class="section-head"><div><h2>01. Mengenal model dua sektor</h2><p class="lead">Model dasar ekonomi makro yang menjelaskan arus pendapatan dan pengeluaran di antara dua kelompok utama.</p></div></div>
+    <div class="grid2">
+      <article class="panel"><span class="pill">Rumah tangga</span><h3>Pemilik faktor produksi</h3><p>Rumah tangga menyediakan tenaga kerja, tanah, modal, atau keahlian kepada perusahaan. Sebagai balas jasa, rumah tangga menerima pendapatan lalu menggunakannya untuk konsumsi atau menabung.</p></article>
+      <article class="panel"><span class="pill">Perusahaan</span><h3>Produsen barang dan jasa</h3><p>Perusahaan menggunakan faktor produksi untuk menghasilkan barang dan jasa. Perusahaan membayar pendapatan kepada rumah tangga, menerima pengeluaran konsumsi, dan melakukan investasi.</p></article>
+    </div>
+    <div class="callout"><strong>Asumsi model:</strong> belum memasukkan pemerintah (pajak dan belanja pemerintah) maupun sektor luar negeri (ekspor dan impor). Dalam model ini, investasi dianggap sebagai pengeluaran yang direncanakan dan tetap.</div>
+  </section>
+
+  <section id="arus">
+    <div class="section-head"><div><h2>02. Arus melingkar pendapatan</h2><p class="lead">Pendapatan satu pihak menjadi pengeluaran pihak lain sehingga aktivitas ekonomi saling terhubung.</p></div></div>
+    <div class="panel">
+      <svg viewBox="0 0 760 270" width="100%" role="img" aria-label="Diagram arus melingkar antara rumah tangga dan perusahaan" style="max-height:300px">
+        <defs><marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/></marker><marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#138777"/></marker></defs>
+        <rect x="45" y="82" width="230" height="105" rx="18" fill="#e4f4f1" stroke="#7bc9bc" stroke-width="2"/><text x="160" y="123" font-size="20" text-anchor="middle" fill="#135e55" font-weight="700">Rumah Tangga</text><text x="160" y="150" font-size="14" text-anchor="middle" fill="#386d68">Konsumsi • Faktor produksi</text>
+        <rect x="485" y="82" width="230" height="105" rx="18" fill="#eaf1ff" stroke="#9bb8f8" stroke-width="2"/><text x="600" y="123" font-size="20" text-anchor="middle" fill="#204d9b" font-weight="700">Perusahaan</text><text x="600" y="150" font-size="14" text-anchor="middle" fill="#47658d">Produksi • Investasi</text>
+        <path d="M280 100 C350 35 410 35 480 100" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="380" y="37" text-anchor="middle" font-size="15" fill="#1d4ed8" font-weight="700">Faktor produksi</text>
+        <path d="M480 168 C410 235 350 235 280 168" fill="none" stroke="#138777" stroke-width="3" marker-end="url(#arrowGreen)"/><text x="380" y="247" text-anchor="middle" font-size="15" fill="#087f6a" font-weight="700">Upah, sewa, bunga, laba</text>
+        <path d="M600 76 C600 5 160 5 160 76" fill="none" stroke="#2563eb" stroke-dasharray="5 5" stroke-width="2" marker-end="url(#arrowBlue)" opacity=".0"/>
+        <text x="380" y="132" text-anchor="middle" font-size="13" fill="#64748b">Barang &amp; jasa ↔ pengeluaran konsumsi</text>
+      </svg>
+      <p class="note">Diagram disederhanakan: rumah tangga menerima pendapatan dari faktor produksi dan membelanjakannya untuk membeli output perusahaan. Sebagian pendapatan dapat ditabung, yang dalam model seimbang diimbangi oleh investasi.</p>
+    </div>
+  </section>
+
+  <section id="rumus">
+    <div class="section-head"><div><h2>03. Rumus keseimbangan</h2><p class="lead">Keseimbangan terjadi saat output atau pendapatan nasional sama dengan pengeluaran agregat yang direncanakan.</p></div></div>
+    <div class="grid2">
+      <div class="panel"><h3>Fungsi konsumsi</h3><div class="formula-box"><div class="big">C = a + bY</div><p>Konsumsi otonom + konsumsi yang bergantung pada pendapatan</p></div><p><strong>a</strong> = konsumsi otonom; <strong>b</strong> = kecenderungan mengonsumsi marginal (MPC); <strong>Y</strong> = pendapatan nasional.</p></div>
+      <div class="panel"><h3>Syarat keseimbangan</h3><div class="formula-box"><div class="big">Y = C + I</div><p>Output = konsumsi + investasi</p></div><p>Substitusikan fungsi konsumsi ke persamaan keseimbangan untuk memperoleh:</p><div class="formula-box"><div class="big">Y* = (a + I) / (1 − b)</div><p>Y* adalah pendapatan nasional keseimbangan</p></div></div>
+    </div>
+    <div class="callout"><strong>Ingat:</strong> dalam model sederhana ini, nilai MPC biasanya berada antara 0 dan 1. Semakin besar MPC, semakin besar potensi efek pengganda (multiplier) dari perubahan pengeluaran otonom.</div>
+  </section>
+
+  <section id="langkah">
+    <div class="section-head"><div><h2>04. Contoh perhitungan</h2><p class="lead">Ikuti langkah sederhana untuk mencari pendapatan nasional keseimbangan.</p></div></div>
+    <div class="steps">
+      <div class="step"><h3>Tentukan parameter</h3><p>Misalnya a = 100, MPC (b) = 0,8, dan investasi I = 50 (dalam satuan uang yang sama).</p></div>
+      <div class="step"><h3>Masukkan ke rumus</h3><p>Y* = (100 + 50) / (1 − 0,8) = 150 / 0,2.</p></div>
+      <div class="step"><h3>Dapatkan hasil</h3><p>Pendapatan nasional keseimbangan adalah Y* = 750. Pada tingkat ini, Y = C + I.</p></div>
+    </div>
+  </section>
+
+  <section id="kalkulator">
+    <div class="section-head"><div><h2>05. Kalkulator interaktif</h2><p class="lead">Ubah nilai konsumsi otonom, MPC, dan investasi untuk melihat perubahan keseimbangan.</p></div></div>
+    <div class="calc">
+      <div class="panel controls">
+        <h3>Masukkan parameter</h3>
+        <label for="a">Konsumsi otonom (a)</label><input type="number" id="a" min="0" step="any" value="100">
+        <label for="b">MPC / kecenderungan mengonsumsi marginal (b)</label><input type="number" id="b" min="0" max="0.99" step="0.01" value="0.8">
+        <label for="i">Investasi (I)</label><input type="number" id="i" min="0" step="any" value="50">
+        <button id="calculate">Hitung keseimbangan</button>
+        <p class="note">Gunakan nilai b antara 0 dan kurang dari 1. Satuan angka bebas, asalkan konsisten.</p>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="label">Pendapatan nasional seimbang (Y*)</div><div class="value" id="y-result">750</div>
+        <div class="equation" id="formula-result">Y* = (100 + 50) / (1 − 0,8) = 750</div>
+        <table><tbody>
+          <tr><th>Komponen</th><th>Hasil</th></tr>
+          <tr><td>Konsumsi (C = a + bY)</td><td id="c-result">700</td></tr>
+          <tr><td>Investasi (I)</td><td id="i-result">50</td></tr>
+          <tr><td>Total pengeluaran (C + I)</td><td id="total-result">750</td></tr>
+          <tr><td>Multiplier (1 / (1 − b))</td><td id="m-result">5</td></tr>
+        </tbody></table>
+        <p id="status" class="note">Keseimbangan tercapai ketika Y = C + I.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="inti">
+    <div class="section-head"><div><h2>06. Konsep penting untuk diingat</h2><p class="lead">Empat istilah yang sering muncul dalam soal dan diskusi kuliah.</p></div></div>
+    <div class="grid2">
+      <article class="topic"><h3>MPC</h3><p>Marginal Propensity to Consume: tambahan konsumsi ketika pendapatan bertambah satu unit. Dalam fungsi C = a + bY, MPC adalah b.</p></article>
+      <article class="topic"><h3>MPS</h3><p>Marginal Propensity to Save: bagian tambahan pendapatan yang ditabung. Dalam model sederhana, MPS = 1 − MPC.</p></article>
+      <article class="topic"><h3>Multiplier</h3><p>Pengganda pengeluaran otonom: k = 1 / (1 − MPC). Menunjukkan seberapa besar perubahan pendapatan keseimbangan akibat perubahan pengeluaran otonom.</p></article>
+      <article class="topic"><h3>Kebocoran dan suntikan</h3><p>Dalam pendekatan tabungan-investasi, keseimbangan dapat ditulis S = I: tabungan yang direncanakan sama dengan investasi yang direncanakan.</p></article>
+    </div>
+  </section>
+
+  <section id="kuis">
+    <div class="section-head"><div><h2>07. Uji pemahaman</h2><p class="lead">Pilih jawaban untuk menguji pemahaman dasar materi.</p></div></div>
+    <div class="panel" id="quiz">
+      <div class="quiz-q" data-answer="b"><p>1. Dalam model dua sektor, pelaku ekonomi utamanya adalah…</p><label><input type="radio" name="q1" value="a"> Rumah tangga, perusahaan, dan pemerintah</label><label><input type="radio" name="q1" value="b"> Rumah tangga dan perusahaan</label><label><input type="radio" name="q1" value="c"> Pemerintah dan luar negeri</label></div>
+      <div class="quiz-q" data-answer="c"><p>2. Jika C = 100 + 0,8Y dan I = 50, berapa pendapatan keseimbangan?</p><label><input type="radio" name="q2" value="a"> 150</label><label><input type="radio" name="q2" value="b"> 500</label><label><input type="radio" name="q2" value="c"> 750</label></div>
+      <div class="quiz-q" data-answer="a"><p>3. Jika MPC = 0,75, nilai multiplier adalah…</p><label><input type="radio" name="q3" value="a"> 4</label><label><input type="radio" name="q3" value="b"> 0,25</label><label><input type="radio" name="q3" value="c"> 1,75</label></div>
+      <button id="check-quiz">Periksa jawaban</button><div id="quiz-feedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+  <section><div class="panel"><h2>Kesimpulan</h2><p>Keseimbangan perekonomian dua sektor menjelaskan bagaimana konsumsi rumah tangga dan investasi perusahaan menentukan pendapatan nasional. Dalam model sederhana, keseimbangan dicapai ketika <strong>Y = C + I</strong>, dan jika fungsi konsumsi berbentuk <strong>C = a + bY</strong>, pendapatan keseimbangan adalah <strong>Y* = (a + I) / (1 − b)</strong>.</p><p class="note">Materi ini disusun sebagai pengantar pembelajaran. Untuk tugas kuliah, sesuaikan istilah, asumsi, dan notasi dengan buku ajar atau arahan dosen.</p></div></section>
+</main>
+<footer><strong>Keseimbangan Perekonomian 2 Sektor</strong><br>Media pembelajaran ekonomi makro • Ringkas, interaktif, dan mudah dipelajari</footer>
+<script>
+const fmt = n => Number(n).toLocaleString('id-ID',{maximumFractionDigits:2});
+function calculate(){
+ const a=Number(document.getElementById('a').value), b=Number(document.getElementById('b').value), i=Number(document.getElementById('i').value);
+ const status=document.getElementById('status');
+ if(!Number.isFinite(a)||!Number.isFinite(b)||!Number.isFinite(i)||a<0||i<0||b<0||b>=1){
+  status.textContent='Periksa input: a dan I tidak boleh negatif, sedangkan MPC harus ≥ 0 dan < 1.';
+  status.style.color='#b45309';return;
+ }
+ const y=(a+i)/(1-b), c=a+b*y, mult=1/(1-b);
+ document.getElementById('y-result').textContent=fmt(y);
+ document.getElementById('formula-result').textContent=`Y* = (${fmt(a)} + ${fmt(i)}) / (1 − ${fmt(b)}) = ${fmt(y)}`;
+ document.getElementById('c-result').textContent=fmt(c);
+ document.getElementById('i-result').textContent=fmt(i);
+ document.getElementById('total-result').textContent=fmt(c+i);
+ document.getElementById('m-result').textContent=fmt(mult);
+ status.textContent=`Pemeriksaan: C + I = ${fmt(c+i)}, sama dengan Y* = ${fmt(y)}.`;
+ status.style.color='#17685f';
+}
+document.getElementById('calculate').addEventListener('click',calculate);
+['a','b','i'].forEach(id=>document.getElementById(id).addEventListener('keydown',e=>{if(e.key==='Enter')calculate()}));
+document.getElementById('check-quiz').addEventListener('click',()=>{
+ let score=0, total=3;
+ document.querySelectorAll('.quiz-q').forEach((q,index)=>{
+  const selected=q.querySelector('input:checked');
+  let old=q.querySelector('.question-feedback'); if(old)old.remove();
+  const f=document.createElement('div'); f.className='question-feedback feedback';
+  if(selected&&selected.value===q.dataset.answer){score++;f.classList.add('good');f.textContent='Benar!';}
+  else {f.classList.add('bad');f.textContent='Belum tepat. Coba baca kembali materi terkait.';}
+  q.appendChild(f);
+ });
+ const out=document.getElementById('quiz-feedback');out.textContent=`Nilai: ${score}/${total} (${Math.round(score/total*100)}%).`;out.className='feedback '+(score===total?'good':'bad');
+});
+calculate();
+</script>
+</body>
+</html>
